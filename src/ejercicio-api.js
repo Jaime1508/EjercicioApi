@@ -91,6 +91,7 @@ export class EjercicioApi extends LitElement{
           <option value="Slytherin">Slytherin</option>
           <option value="Hufflepuff">Hufflepuff</option>
         </select>
+        <button @click=${this.buscarDato2}>Buscar por casa</button>
       </div>
       ${this.template}
     `;
@@ -125,6 +126,7 @@ export class EjercicioApi extends LitElement{
 
   buscarDato(){
     const input = this.shadowRoot.querySelector("#form").value.toLowerCase();
+
     this.buscar = [];
     this.mostrar.map(dato => {
       const nombre = dato.name.toLowerCase();
@@ -132,20 +134,20 @@ export class EjercicioApi extends LitElement{
       if(nombre.indexOf(input) !== -1){
         this.buscar = [...this.buscar, dato];
       }
-    })
+    });
   }
 
   buscarDato2(){
-    const input = this.shadowRoot.querySelector("#select").value.toLowerCase();
-    console.log(input);
+    const input2 = this.shadowRoot.querySelector("#select").value.toLowerCase();
+    console.log(input2);
+
     this.buscar = [];
     this.mostrar.map(dato => {
       const casa = dato.house.toLowerCase();
-
-      if(casa.indexOf(input) !== -1){
+      if(casa === input2){
         this.buscar = [...this.buscar, dato];
       }
-    })
+    });
   }
 
   limpiarTexto(){
